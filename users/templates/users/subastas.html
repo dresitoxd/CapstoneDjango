@@ -1,0 +1,117 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+
+{%block title%} Miitin TCG {% endblock %}
+
+{% block content %}
+
+
+      <main>
+        <article>
+            <!-- carrusel -->
+
+            <section class="hero text-center" aria-label="home" id="home">
+                <ul class="hero-slider" data-hero-slider>
+                    <li class="slider-item active" data-hero-slider-item>
+                        <div class="slider-bg">
+                            <img src="{% static 'img/hero-slider2.png' %}" width="1880" height="950" alt="" class="img-cover">
+                        </div>
+
+                        <p class="label-2 section-subtitle slider-reveal">TCG | Salo</p>
+
+                        <h1 class="display-1 hero-title slider-reveal">
+                            Mitos y Leyendas
+                        </h1>
+
+                        <p class="body-2 hero-text slider-reveal">
+                            Juega con tus leyendas o mitos favoritos creando tu propia estrategia
+                        </p>
+
+                        <a href="#" class="btn btn-primary slider-reveal">
+                            <span class="text text-1"> Mira la Tienda</span>
+                            <span class="text text-2" aria-hidden="true"> Mira la Tienda</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+
+
+                <button class="slider-btn prev" aria-label="slide to previous" data-prev-btn>
+                    <ion-icon name="chevron-back"></ion-icon>
+                </button>
+
+                <button class="slider-btn next" aria-label="slide to next" data-next-btn>
+                    <ion-icon name="chevron-forward"></ion-icon>
+                </button>
+
+                <a href="#" class="hero-btn has-after">
+                    <img src="{% static 'img/hero-icon.png' %}" width="58" height="58" alt="booking icon">
+                    <span class="label-2 text-center span">Encuentra tu mazo</span>
+                </a>
+
+            </section>
+
+
+            <!-- Servicios -->
+
+            <section class="section service bg-black-10 text-center" aria-label="service">
+                <div class="container">
+                    <p class="section-subtitle label-2"></p>
+                    <h2 class="headline-1 section-title"></h2>
+            
+                    <h3 class="title-4 card-title">
+                        <a href="#">Bienvenido a las subastas de Mitos Y Leyendas</a>
+                    </h3>
+            
+                    <form method="GET" action="{% url 'subasta' %}">
+                        <input type="text" name="query" placeholder="Buscar carta..." required>
+                        <button type="submit">Buscar</button>
+                    </form>
+            
+                    <ul class="grid-list">
+                        {% for subasta in subastas %}
+                        <li>
+                            <div class="service-card">
+                                <a href="#" class="has-before hover:shine">
+                                    <figure class="card-banner img-holder" style="--width: 285; --height:336">
+                                        <img src="{{ subasta.image.url }}" width="285" height="336" 
+                                        loading="lazy" alt="{{ subasta.description }}" class="img-cover">
+                                    </figure>
+                                </a>
+            
+                                <div class="card-content">
+                                    <h3 class="title-4 card-title">
+                                        <a href="#">{{ subasta.title }}</a>
+                                    </h3>
+
+                                    <p><strong>Descripcion:</strong> {{ subasta.description }}</p>
+                                    <p><strong>Juego:</strong> {{ subasta.game }}</p>
+                                    <p><strong>Rareza:</strong> {{ subasta.rarity }}</p>
+                                    <p><strong>Estado:</strong> {{ subasta.condition }}</p>
+                                    <p><strong>Duración:</strong> {{ subasta.duration }} hora</p>
+                                    <p><strong>Duración restante:</strong> <span class="countdown" data-end-time="{{ subasta.end_time }}"></span></p>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+            
+                    <img src="assets/images/logo-pokemon.png" width="246" height="412" loading="lazy" 
+                    alt="shape" class="shape shape-1 move-anim">
+                    <img src="assets/images/logo_myl.png" width="246" height="412" loading="lazy" 
+                    alt="shape" class="shape shape-1 move-anim">
+                    <img src="assets/images/yugi-logo.png" width="246" height="412" loading="lazy" 
+                    alt="shape" class="shape shape-1 move-anim">
+                </div>
+            </section>
+
+
+        </article>
+      </main>
+
+{% endblock %}      
+</body>
+</html>

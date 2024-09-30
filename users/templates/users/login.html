@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Inicio de sesión - Miitin Scanner{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <h2 class="text-center">Iniciar sesión</h2>
+        <form method="POST" class="mt-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username">Nombre de usuario</label>
+                <input type="text" name="username" id="id_username" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="id_password">Contraseña</label>
+                <input type="password" name="password" id="id_password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
