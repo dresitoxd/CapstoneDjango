@@ -1,0 +1,32 @@
+<!-- templates/users/logout.html -->
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block title %}Cerrar Sesión{% endblock %}
+
+{% block content %}
+<main>
+    <section class="section text-center" aria-label="logout">
+        <div class="container">
+            <h2 class="title-4">Has cerrado sesión correctamente</h2>
+
+            <a href="{% url 'index' %}" class="btn btn-primary">Volver al Inicio</a>
+        </div>
+    </section>
+</main>
+
+<style>
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+    .btn-primary:hover {
+        opacity: 0.8;
+    }
+</style>
+{% endblock %}

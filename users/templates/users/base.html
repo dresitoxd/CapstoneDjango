@@ -136,6 +136,34 @@
                             <span class="span">Contáctanos</span>
                         </a>
                     </li>
+            
+                    {% if not user.is_authenticated %}
+                    <li class="navbar-item">
+                        <a href="{% url 'login' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Login</span>
+                        </a>
+                    </li>
+            
+                    <li class="navbar-item">
+                        <a href="{% url 'register' %}" class="navbar-link hover-underline">
+                            <div class="separator"></div>
+                            <span class="span">Register</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% if user.is_authenticated %}
+                    <li class="navbar-item">
+                        <form method="post" action="{% url 'logout' %}" >
+                            {% csrf_token %}
+                            <button type="submit" class="navbar-link hover-underline" style="color: #FFFF;">
+                                <div class="separator"></div>
+                                <span class="span">Log out</span>
+                            </button>
+                        </form>
+                    </li>
+                    {% endif %}
                 </ul>
             
                 <div class="text-center">
@@ -155,6 +183,7 @@
                     <a href="tel:+56995264982" class="body-1 contact-number hover-underline">+569-95264982</a>
                 </div>
             </nav>
+            
 
             <a href="#" class="btn btn-secondary">
                 <span class="text text-1">Encuentra tu mundo</span>

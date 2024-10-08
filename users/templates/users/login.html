@@ -1,23 +1,84 @@
-{% extends "base.html" %}
+<!-- templates/users/login.html -->
+{% extends 'users/base.html' %}
+{% load static %}
 
-{% block title %}Inicio de sesión - Miitin Scanner{% endblock %}
+{% block title %}Iniciar Sesión{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center mt-5">
-    <div class="col-md-6">
-        <h2 class="text-center">Iniciar sesión</h2>
-        <form method="POST" class="mt-4">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="id_username">Nombre de usuario</label>
-                <input type="text" name="username" id="id_username" class="form-control">
+<main>
+    <section class="section text-center" aria-label="login">
+        <div class="container">
+            <h2 class="title-4">Inicia Sesión</h2>
+
+            <div class="form-container">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+                        <a href="{% url 'register' %}" class="btn btn-secondary">Registrar</a>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="id_password">Contraseña</label>
-                <input type="password" name="password" id="id_password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
-        </form>
-    </div>
-</div>
+        </div>
+    </section>
+</main>
+
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #e9ecef;
+        color: #333;
+    }
+
+    .form-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+        opacity: 0.8;
+    }
+</style>
 {% endblock %}

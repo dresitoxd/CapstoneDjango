@@ -1,23 +1,23 @@
-<!-- templates/users/register.html -->
+<!-- templates/users/crear_subasta.html -->
 {% extends 'users/base.html' %}
 {% load static %}
 
-{% block title %}Registrarse{% endblock %}
+{% block title %}Publicar Subasta{% endblock %}
 
 {% block content %}
 <main>
-    <section class="section text-center" aria-label="register">
+    <section class="section text-center" aria-label="crear subasta">
         <div class="container">
-            <h2 class="title-4">Crear Cuenta</h2>
+            <h2 class="title-4">Publica una nueva subasta</h2>
 
             <div class="form-container">
-                <form method="post">
+                <form method="post" enctype="multipart/form-data" class="styled-form">
                     {% csrf_token %}
                     {{ form.as_p }}
 
                     <div class="form-buttons">
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
-                        <a href="{% url 'index' %}" class="btn btn-secondary">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Publicar</button>
+                        <a href="{% url 'subasta' %}" class="btn btn-secondary">Cancelar</a> <!-- Botón Cancelar -->
                     </div>
                 </form>
             </div>
@@ -35,15 +35,18 @@
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .form-container label {
+    .styled-form label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: #333;
+        color: #333; /* Color oscuro para las etiquetas */
+        text-align: left;
     }
 
-    .form-container input[type="text"],
-    .form-container input[type="password"] {
+    .styled-form input[type="text"],
+    .styled-form input[type="file"],
+    .styled-form textarea,
+    .styled-form select {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -58,21 +61,22 @@
         justify-content: space-between;
     }
 
-    .btn-primary,
-    .btn-secondary {
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         text-decoration: none;
-        color: white;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
     }
 
     .btn-secondary {
         background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
     }
 
     .btn-primary:hover,

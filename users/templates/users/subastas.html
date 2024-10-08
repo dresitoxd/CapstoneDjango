@@ -59,16 +59,13 @@
             <section class="section service bg-black-10 text-center" aria-label="service">
                 <div class="container">
                     <p class="section-subtitle label-2"></p>
-                    <h2 class="headline-1 section-title"></h2>
+                    
             
                     <h3 class="title-4 card-title">
                         <a href="#">Bienvenido a las subastas de Mitos Y Leyendas</a>
                     </h3>
-            
-                    <form method="GET" action="{% url 'subasta' %}">
-                        <input type="text" name="query" placeholder="Buscar carta..." required>
-                        <button type="submit">Buscar</button>
-                    </form>
+                    <p class="section-subtitle label-2">Publica tus cartas para recibir las mejores ofertas</p>
+                    <a href="{% url 'crear_subasta' %}" class="btn-text hover-underline label-2">Publicar Subasta</a>
             
                     <ul class="grid-list">
                         {% for subasta in subastas %}
