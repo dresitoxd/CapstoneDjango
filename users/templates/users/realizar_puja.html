@@ -1,0 +1,96 @@
+<style>
+    .puja-form {
+    background-color: var(--eerie-black-2);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--black-alpha-30);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.puja-form .form-group {
+    margin-bottom: 20px;
+}
+
+.puja-form .form-group label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold-crayola);
+    margin-bottom: 8px;
+}
+
+.puja-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid var(--gold-crayola);
+    border-radius: 8px;
+    background-color: var(--eerie-black-1);
+    color: var(--quick-silver);
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+.puja-form .form-group input:focus {
+    border-color: var(--gold-crayola);
+    outline: none;
+}
+
+.puja-form .btn {
+    background-color: var(--gold-crayola);
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    border: none;
+}
+
+.puja-form .btn:hover {
+    background-color: var(--smoky-black-1);
+}
+
+.error {
+    background-color: var(--smoky-black-2);
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.error-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.error-list li {
+    color: var(--gold-crayola);
+    font-size: 1rem;
+}
+
+</style>
+
+<form method="POST" class="puja-form">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <button type="submit" class="btn btn-primary">Realizar Puja</button>
+</form>
+
+{% if form.errors %}
+    <div class="error">
+        <ul class="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+
+

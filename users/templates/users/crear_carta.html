@@ -2,13 +2,13 @@
 {% extends 'users/base.html' %}
 {% load static %}
 
-{% block title %}Publicar Subasta{% endblock %}
+{% block title %}Publicar Carta{% endblock %}
 
 {% block content %}
 <main>
     <section class="section text-center" aria-label="crear subasta">
         <div class="container">
-            <h2 class="title-4">Publica una nueva subasta</h2>
+            <h2 class="title-4">Publica una nueva carta</h2>
             <br>
 
             <div class="form-container">
@@ -18,7 +18,7 @@
 
                     <div class="form-buttons">
                         <button type="submit" class="btn btn-primary">Publicar</button>
-                        <a href="{% url 'subasta' %}" class="btn btn-secondary">Cancelar</a> <!-- Botón Cancelar -->
+                        <a href="{% url 'tienda' %}" class="btn btn-secondary">Cancelar</a> <!-- Botón Cancelar -->
                     </div>
                 </form>
             </div>

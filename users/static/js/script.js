@@ -169,7 +169,11 @@ function startCountdown(element, endTime) {
 document.addEventListener("DOMContentLoaded", function() {
     const countdownElements = document.querySelectorAll('.countdown');
     countdownElements.forEach(function(element) {
-        const endTime = element.getAttribute('data-end-time');
+        let endTime = element.getAttribute('data-end-time');
+        
+        // Convertir la fecha a formato Date válido si es necesario
+        endTime = new Date(endTime);
+        
         startCountdown(element, endTime);
     });
 });

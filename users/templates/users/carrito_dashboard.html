@@ -1,0 +1,80 @@
+{% extends 'users/base.html' %}
+
+{% block title %} Carrito de Compras {% endblock %}
+
+{% block content %}
+<br><br><br><br>
+<main>
+    <section class="carrito-dashboard">
+        <h1 class="title">Tu Carrito</h1>
+        {% if carrito %}
+            <ul class="carrito-list">
+                {% for item in items %}
+                    <li class="carrito-item">
+                        <div class="carrito-item-details">
+                            <img src="{{ item.carta.image.url }}" alt="{{ item.carta.title }}" class="carrito-item-img">
+                            <div class="carrito-item-info">
+                                <h3>{{ item.carta.title }}</h3>
+                                <p>Cantidad: {{ item.cantidad }}</p>
+                                <p>Precio: ${{ item.carta.price }}</p>
+                                <p>Total: ${{ item.total }}</p> <!-- Aquí debería aparecer el total por item -->
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <div class="carrito-total">
+                <h3>Total del carrito: ${{ total_carrito }}</h3> <!-- Total calculado y pasado por la vista -->
+                <a href="#" class="btn btn-primary">Proceder al pago</a>
+                <br>
+                <a href="{% url 'tienda' %}" class="btn btn-primary">Tienda</a>
+            </div>
+
+        {% else %}
+            <p>No tienes productos en tu carrito.</p>
+        {% endif %}
+    </section>
+</main>
+
+<style>
+    .carrito-dashboard {
+        padding: 20px;
+    }
+    .carrito-list {
+        list-style: none;
+        padding: 0;
+    }
+    .carrito-item {
+        display: flex;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+    .carrito-item-details {
+        display: flex;
+    }
+    .carrito-item-img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+    .carrito-item-info {
+        flex: 1;
+    }
+    .carrito-total {
+        margin-top: 20px;
+    }
+    .btn {
+        padding: 10px 20px;
+        background-color: var(--gold-crayola);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background-color: var(--smoky-black-1);
+    }
+</style>
+{% endblock %}
